@@ -1,3 +1,5 @@
+const branch = process.env.BRANCH || process.env.CI_REF_NAME || '';
+const isMaster = branch === 'master';
 // semantic-release configuration
 module.exports = {
   plugins: [
@@ -17,5 +19,25 @@ module.exports = {
     ],
     // https://github.com/semantic-release/npm
     ['@semantic-release/npm'],
+    // https://github.com/semantic-release/github
+    [
+      '@semantic-release/github',
+      {
+        successComment: false,
+        failComment: false
+      }
+    ],
+    // https://github.com/semantic-release/git
+    isMaster && [
+      '@semantic-release/git',
+      {
+        assets: ['package.json', 'package-lock.json', 'yarn.lock', 'npm-shrinkwrap.json', 'CHANGELOG.md'],
+        message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+        GIT_AUTHOR_NAME: pkg.author.name,
+        GIT_AUTHOR_EMAIL: pkg.author.email,
+        GIT_COMMITTER_NAME: pkg.author.name,
+        GIT_COMMITTER_EMAIL: pkg.author.email
+      }
+    ]
   ],
 };
