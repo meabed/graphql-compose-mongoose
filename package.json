@@ -10,7 +10,7 @@
   "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/graphql-compose/graphql-compose-mongoose.git"
+    "url": "https://github.com/meabed/graphql-compose-mongoose.git"
   },
   "keywords": [
     "graphql",
@@ -20,9 +20,9 @@
     "mongodb"
   ],
   "bugs": {
-    "url": "https://github.com/graphql-compose/graphql-compose-mongoose/issues"
+    "url": "https://github.com/meabed/graphql-compose-mongoose/issues"
   },
-  "homepage": "https://github.com/graphql-compose/graphql-compose-mongoose",
+  "homepage": "https://github.com/meabed/graphql-compose-mongoose",
   "dependencies": {
     "dataloader": "^2.2.2",
     "graphql-compose-connection": "8.2.1",

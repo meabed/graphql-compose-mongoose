@@ -1,7 +1,7 @@
-# graphql-compose-mongoose
+# @meabed/graphql-compose-mongoose
 
-[![travis build](https://img.shields.io/travis/graphql-compose/graphql-compose-mongoose.svg)](https://travis-ci.org/graphql-compose/graphql-compose-mongoose)
-[![codecov coverage](https://img.shields.io/codecov/c/github/graphql-compose/graphql-compose-mongoose.svg)](https://codecov.io/github/graphql-compose/graphql-compose-mongoose)
+[![travis build](https://img.shields.io/travis/meabed/graphql-compose-mongoose.svg)](https://travis-ci.org/meabed/graphql-compose-mongoose)
+[![codecov coverage](https://img.shields.io/codecov/c/github/meabed/graphql-compose-mongoose.svg)](https://codecov.io/github/meabed/graphql-compose-mongoose)
 [![npm](https://img.shields.io/npm/v/graphql-compose-mongoose.svg)](https://www.npmjs.com/package/graphql-compose-mongoose)
 [![trends](https://img.shields.io/npm/dt/graphql-compose-mongoose.svg)](http://www.npmtrends.com/graphql-compose-mongoose)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
@@ -10,7 +10,7 @@
 
 This is a plugin for [graphql-compose](https://github.com/graphql-compose/graphql-compose), which derives GraphQLType from your [mongoose model](https://github.com/Automattic/mongoose). Also derives bunch of internal GraphQL Types. Provide all CRUD resolvers, including `graphql connection`, also provided basic search via operators ($lt, $gt and so on).
 
-[Release Notes for v9.0.0](https://github.com/graphql-compose/graphql-compose-mongoose/blob/alpha/docs/releases/9.0.0.md) contains a lot of improvements. It's strongly recommended for reading before upgrading from v8.
+[Release Notes for v9.0.0](https://github.com/meabed/graphql-compose-mongoose/blob/alpha/docs/releases/9.0.0.md) contains a lot of improvements. It's strongly recommended for reading before upgrading from v8.
 
 <!-- TOC depthFrom:2 -->
 
@@ -63,14 +63,14 @@ This is a plugin for [graphql-compose](https://github.com/graphql-compose/graphq
 ## Installation
 
 ```bash
-npm install graphql graphql-compose mongoose graphql-compose-mongoose --save
+npm install graphql graphql-compose mongoose @meabed/graphql-compose-mongoose --save
 ```
 
 Modules `graphql`, `graphql-compose`, `mongoose` are in `peerDependencies`, so should be installed explicitly in your app. They have global objects and should not have ability to be installed as submodule.
 
 ## Intro video
 
-Viktor Kjartansson created a quite solid intro for `graphql-compose-mongoose` in comparison with `graphql-tools`:
+Viktor Kjartansson created a quite solid intro for `@meabed/graphql-compose-mongoose` in comparison with `graphql-tools`:
 
 <a href="https://www.youtube.com/watch?v=RXcY-OoGnQ8" target="_blank"><img src="https://img.youtube.com/vi/RXcY-OoGnQ8/0.jpg" alt="#2 Mongoose - add GraphQL with graphql-compose" style="width: 380px" />
 
@@ -91,7 +91,7 @@ Small explanation for variables naming:
 
 ```ts
 import mongoose from 'mongoose';
-import { composeMongoose } from 'graphql-compose-mongoose';
+import { composeMongoose } from '@meabed/graphql-compose-mongoose';
 import { schemaComposer } from 'graphql-compose';
 
 // STEP 1: DEFINE MONGOOSE SCHEMA AND MODEL
@@ -732,7 +732,7 @@ type FilterHelperArgsOpts = {
   requiredFields?: string | string[];
   /**
    * Customize operators filtering or disable it at all.
-   * By default, for performance reason, `graphql-compose-mongoose` generates operators
+   * By default, for performance reason, `@meabed/graphql-compose-mongoose` generates operators
    * *only for indexed* fields.
    *
    * BUT you may enable operators for all fields when creating resolver in the following way:
@@ -926,13 +926,13 @@ const Article = Schema({
 });
 ```
 
-If you want the `ImageDataStructure` to use the same GraphQL type in both `Article` and `UserProfile` you will need create it as a mongoose schema (not a standard javascript object) and to explicitly tell `graphql-compose-mongoose` the name you want it to have. Otherwise, without the name, it would generate the name according to the first parent this type was embedded in.
+If you want the `ImageDataStructure` to use the same GraphQL type in both `Article` and `UserProfile` you will need create it as a mongoose schema (not a standard javascript object) and to explicitly tell `@meabed/graphql-compose-mongoose` the name you want it to have. Otherwise, without the name, it would generate the name according to the first parent this type was embedded in.
 
 Do the following:
 
 ```ts
 import { schemaComposer } from 'graphql-compose'; // get the default schemaComposer or your created schemaComposer
-import { convertSchemaToGraphQL } from 'graphql-compose-mongoose';
+import { convertSchemaToGraphQL } from '@meabed/graphql-compose-mongoose';
 
 convertSchemaToGraphQL(ImageDataStructure, 'EmbeddedImage', schemaComposer); // Force this type on this mongoose schema
 ```
@@ -941,7 +941,7 @@ Before continuing to convert your models to TypeComposers:
 
 ```ts
 import mongoose from 'mongoose';
-import { composeMongoose } from 'graphql-compose-mongoose';
+import { composeMongoose } from '@meabed/graphql-compose-mongoose';
 
 const UserProfile = mongoose.model('UserProfile', UserProfile);
 const Article = mongoose.model('Article', Article);
