@@ -1,14 +1,5 @@
-// https://semantic-release.gitbook.io/semantic-release/usage/configuration
-const branch = process.env.BRANCH || process.env.CI_REF_NAME || '';
 // semantic-release configuration
 module.exports = {
-  branches: [
-    {
-      name: 'master',
-      prerelease: false,
-    },
-    { name: branch, prerelease: true },
-  ],
   plugins: [
     [
       '@semantic-release/commit-analyzer',
