@@ -1,6 +1,6 @@
 {
   "name": "graphql-compose-mongoose-extended",
-  "version": "0.0.0-semantically-released",
+  "version": "9.7.5",
   "description": "Plugin for `graphql-compose` which derive a graphql types from a mongoose model.",
   "license": "MIT",
   "files": [
