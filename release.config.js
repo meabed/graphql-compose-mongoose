@@ -1,5 +1,3 @@
-const branch = process.env.BRANCH || process.env.CI_REF_NAME || '';
-const isMaster = branch === 'master';
 // semantic-release configuration
 module.exports = {
   plugins: [
@@ -28,13 +26,12 @@ module.exports = {
       }
     ],
     // https://github.com/semantic-release/git
-    // only add commit on master
-    isMaster && [
+    [
       '@semantic-release/git',
       {
         assets: ['package.json', 'package-lock.json', 'yarn.lock', 'npm-shrinkwrap.json', 'CHANGELOG.md'],
         message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
       }
     ]
-  ].filter(Boolean),
+  ]
 };
