@@ -28,6 +28,7 @@ module.exports = {
       }
     ],
     // https://github.com/semantic-release/git
+    // only add commit on master
     isMaster && [
       '@semantic-release/git',
       {
@@ -35,5 +36,5 @@ module.exports = {
         message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
       }
     ]
-  ],
+  ].filter(Boolean),
 };
