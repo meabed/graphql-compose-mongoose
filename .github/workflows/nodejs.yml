@@ -64,7 +64,7 @@ jobs:
       - name: Semantic Release (publish to npm)
         run: |
             npm install -g semantic-release@19 @semantic-release/git
-            npx semantic-release@19
+            semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
