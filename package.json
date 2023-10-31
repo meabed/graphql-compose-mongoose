@@ -67,5 +67,6 @@
     "test-prev-vers-7": "yarn add mongoose@7.6.4 --dev --ignore-engines --ignore-scripts && yarn coverage && git checkout HEAD -- package.json yarn.lock",
     "test-prev-vers-6": "yarn add mongoose@6.1.2 --dev --ignore-engines --ignore-scripts && yarn coverage && git checkout HEAD -- package.json yarn.lock",
     "test-prev-vers-5": "yarn add mongoose@5.13.8 --dev --ignore-engines --ignore-scripts && yarn coverage && git checkout HEAD -- package.json yarn.lock"
-  }
+  },
+  "engineStrict": false
 }
